@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification concept</title>
+</head>
+<body>
+
+    <h1>Hello I am Notification .</h1>
+    <p>refresh page!!</p>
+    <p>if not working please , Provide permission first.</p>
+
+
+    <script>
+      
+
+        function showNotification(){
+            const notification = new Notification("New Message From Nikhil",{
+                body:"hey montey !! How are you? I hope we met soon",
+                icon:"https://static.vecteezy.com/packs/media/vectors/term-bg-1-3d6355ab.jpg"
+            });
+
+            notification.onclick=(e)=>{
+                window.location.href = "https://google.com";
+            }
+        }
+
+
+        console.log(Notification.permission);
+        //default / granted / denied
+
+        if(Notification.permission ==="granted"){
+            showNotification();
+        }else if(Notification.permission !== "denied"){
+            Notification.requestPermission().then((permission)=>{
+                if(permission ==="granted"){
+                    showNotification();
+                }
+            })
+        }
+    </script>
+    
+</body>
+</html>
